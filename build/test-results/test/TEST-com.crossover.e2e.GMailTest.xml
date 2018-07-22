@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.crossover.e2e.GMailTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-22T22:10:13" hostname="Vedikas-MacBook-Pro.local" time="33.71">
+  <properties/>
+  <testcase name="testSendEmail" classname="com.crossover.e2e.GMailTest" time="33.71"/>
+  <system-out><![CDATA[10
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 2.40.565386 (45a059dc425e08165f9a10324bd1380cc13ca363) on port 4584
+Only local connections are allowed.
+Jul 23, 2018 3:40:14 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+]]></system-err>
+</testsuite>
