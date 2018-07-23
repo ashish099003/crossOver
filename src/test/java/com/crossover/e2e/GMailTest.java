@@ -1,24 +1,20 @@
 package com.crossover.e2e;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
+
 import java.io.File;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Enumeration;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
 
 
 public class GMailTest extends TestCase {
@@ -34,7 +30,7 @@ public class GMailTest extends TestCase {
 	}
 
 	public void tearDown() throws Exception {
-		//    driver.quit();
+		driver.quit();
 	}
 
 	@Test
@@ -62,19 +58,24 @@ public class GMailTest extends TestCase {
 		String subject = "Test Crossover "+timestamp;
 		String message = "Gmail test for crossover!!!";
 		System.out.println(10);
+		String filename = "attachment.txt";
 		driver.findElement(By.name("subjectbox")).sendKeys(subject);
 		driver.findElement(By.xpath("//*[@role='textbox' and @aria-label='Message Body']")).sendKeys(message);
-		driver.findElement(By.xpath("//*[@aria-label='Attach files']")).sendKeys(projectLocation+"/attachment.txt");
+		driver.findElement(By.xpath("//*[@aria-label='Attach files']")).sendKeys(projectLocation+"/"+filename);
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//*[@role='button' and text()='Send']")).click();
 		Thread.sleep(5000);
 		driver.navigate().refresh();
 		Thread.sleep(5000);
-		String ele = "//span/b[text()='"+subject+"']";
-		driver.findElement(By.xpath(ele)).click();
+		String eleSubject = "//span/b[text()='"+subject+"']";
+		String elefile ="//span/img[@title=\""+filename+"\"]";
+		driver.findElement(By.xpath(eleSubject)).click();
 		WebElement ele_body=driver.findElement(By.xpath("//div[text()='"+message+"']"));
+		WebElement ele_file = driver.findElement(By.xpath(elefile));
 		Assert.assertTrue(ele_body.isDisplayed());
-		
+
+		Assert.assertTrue(ele_file.isDisplayed());
+
 
 	}
 
